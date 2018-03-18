@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:07:22 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/17 21:23:43 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/18 11:07:58 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct	s_point
 struct	s_data
 {
 	char	player;
+	char	opponent;
 	int		widht;
 	int		height;
 	char	*field;
@@ -36,7 +37,7 @@ struct	s_data
 
 void	initialize(t_data *data);
 void	get_input(t_data *data);
-void	print_sol(t_data data);
+char	algo(t_data data);
 void	print_map(t_data data);
 
 #endif

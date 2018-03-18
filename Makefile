@@ -20,7 +20,9 @@ r: $(NAME)
 	@echo "\x1b[32m\nRunning $(NAME)\n\x1b[0m"
 	@echo "VM's output\n" > rez.txt
 	@echo "Stderr\n" > log.txt
-	@-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 ./$(NAME) -s 5467 -t 1 1>> rez.txt 2>> log.txt
+	#@-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 ./$(NAME) -s 5467 -t 10 1>> rez.txt 2>> log.txt
+	@-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 ./$(NAME) -s 2712 -t 10 1>> rez.txt 2>> log.txt
+	#@-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 ./$(NAME) -t 10 1>> rez.txt 2>> log.txt
 
 rc: r
 	@vim -O rez.txt log.txt filler.trace \

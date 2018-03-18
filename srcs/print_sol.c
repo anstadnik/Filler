@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 20:27:03 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/17 22:35:49 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/18 11:16:01 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static int	check_pos(const t_data data, t_point cur)
 		{
 			if (data.token[offs.y * data.tok_widht + offs.x] == '.')
 				continue ;
-			if (cur.y + offs.y < 0 || cur.x + offs.x < 0 || inters)
+			if (cur.y + offs.y < 0 || cur.x + offs.x < 0 || cur.x + offs.x >= data.widht || cur.y + offs.x >= data.height)
 				return (0);
 			p = ft_tolower(data.field[(cur.y + offs.y) * data.widht + cur.x + offs.x]);
 			if (p == '.')
 				continue ;
-			if (p == (data.player == 'x' ? 'x' : 'o'))
+			if (p == data.player && !inters)
 				inters++;
 			else
 				return (0);
@@ -41,31 +41,75 @@ static int	check_pos(const t_data data, t_point cur)
 	return ((int)inters);
 }
 
-/* static int	calc_len(t_data data, size_t y, size_t x) */
-/* { */
-
-/* } */
-
-// TODO: add return value to show if it's time to free
-void		print_sol(const t_data data)
+static ssize_t	pifagor(t_data data, size_t y, size_t x)
 {
-	size_t	dist;
+	t_point	cur;
+	size_t	min;
+	size_t	tmp;
+
+	min = data.height * data.widht;
+	cur.y = -1;
+	while (++cur.y < data.height)
+	{
+		cur.x = -1;
+		while (++cur.x < data.widht)
+		{
+			if (ft_tolower(data.field[cur.y * data.widht + cur.x]) == data.opponent)
+			{
+				tmp = ft_pow(cur.x - x, 2) + ft_pow(cur.y - y, 2);
+				if (tmp < min)
+					min = tmp;
+			}
+		}
+	}
+	return (min);
+}
+
+static size_t	calc_len(t_data data, t_point cur)
+{
+	t_point	offs;
+	ssize_t	min;
+	ssize_t	tmp;
+
+	min = data.height * data.widht;
+	offs.y = -1;
+	while (++offs.y < data.tok_height)
+	{
+		offs.x = -1;
+		while (++offs.x < data.tok_widht)
+		{
+			if (data.token[offs.y * data.tok_widht + offs.x] == '.')
+				continue ;
+			if ((tmp = pifagor(data, cur.y + offs.y, cur.x + offs.x)) < min)
+				min = (size_t)tmp;
+		}
+	}
+	return (min);
+}
+
+char		algo(const t_data data)
+{
+	size_t	min;
+	size_t	tmp;
+	t_point	best;
 	t_point	cur;
 
 	cur.y = -data.tok_height;
-	dist = data.height * data.widht;
-	/* ft_dprintf(2, "HEHEY\n"); */
-	while (cur.y++ < data.height - data.tok_height)
+	min = data.height * data.widht;
+	while (cur.y++ < data.height)
 	{
 		cur.x = -data.tok_widht;
-		while (cur.x++ < data.widht - data.tok_widht)
+		while (cur.x++ < data.widht)
 		{
-			/* ft_dprintf(2, "h = %d w = %d\n", cur.y, cur.x); */
 			if (!check_pos(data, cur))
 				continue ;
-			ft_dprintf(2, "%d %d\n", cur.x, cur.y);
-			ft_printf("%d %d\n", cur.y, cur.x);
-			return ;
+			if ((tmp = calc_len(data, cur)) < min)
+			{
+				min = tmp;
+				best = cur;
+			}
 		}
 	}
+	ft_printf("%d %d\n", best.y, best.x);
+	return (min != (size_t)data.height * data.widht);
 }
