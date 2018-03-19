@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:07:22 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/18 15:09:14 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:11:12 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FILLER_H
 # include "../libft/includes/libft.h"
 
-typedef	struct s_data t_data;
-typedef	struct s_point t_point;
+typedef	struct s_data	t_data;
+typedef	struct s_point	t_point;
 
 struct	s_point
 {

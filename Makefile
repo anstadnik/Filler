@@ -24,16 +24,18 @@ $(VIS): $(LIB) $(addprefix $(ODIR), $(VOBJS))
 	@$(CC) $(CFLAGS) -I$(IDIR) -I /usr/local/include -o $@ $^ -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
 v: $(NAME) $(VIS)
-	#@-./resources/filler_vm -f resources/maps/map01 -p1 resources/players/abanlin.filler -p2 ./$(NAME) -t 10 | ./$(VIS)
-	@-./resources/filler_vm -f resources/maps/map01 -p1 resources/players/abanlin.filler -p2 resources/players/superjeannot.filler | ./$(VIS)
+	@-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler      -p2 ./$(NAME) -s 5467 -t 10 | ./$(VIS)
+	@-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/carli.filler        -p2 ./$(NAME) -s 5467 -t 10 | ./$(VIS)
+	@-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/champely.filler     -p2 ./$(NAME) -s 5467 -t 10 | ./$(VIS)
+	@-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/grati.filler        -p2 ./$(NAME) -s 2712 -t 10 | ./$(VIS)
+	@-./resources/filler_vm -f resources/maps/map01 -p1 resources/players/hcao.filler         -p2 ./$(NAME) -s 7796 -t 10 | ./$(VIS)
+	@-./resources/filler_vm -f resources/maps/map01 -p2 resources/players/superjeannot.filler -p1 ./$(NAME) -t 10 | ./$(VIS)
 
 r: $(NAME)
 	@echo "\x1b[32m\nRunning $(NAME)\n\x1b[0m"
 	@echo "VM's output\n" > rez.txt
 	@echo "Stderr\n" > log.txt
-	@#-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 ./$(NAME) -s 5467 -t 10 1>> rez.txt 2>> log.txt
-	@#-./resources/filler_vm -f resources/maps/map00 -p1 resources/players/abanlin.filler -p2 ./$(NAME) -s 2712 -t 10 1>> rez.txt 2>> log.txt
-	@-./resources/filler_vm -f resources/maps/map01 -p2 resources/players/abanlin.filler -p1 ./$(NAME) -t 10 1>> rez.txt 2>> log.txt
+	@-./resources/filler_vm -f resources/maps/map01 -p1 resources/players/abanlin.filler -p2 ./$(NAME) -s 7796 -t 10 1>> rez.txt 2>> log.txt
 
 rc: r
 	@vim -O rez.txt log.txt filler.trace

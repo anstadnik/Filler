@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:01:15 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/18 18:19:35 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/19 15:22:43 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_map(t_data d)
 	while ((int)j < d.width * d.height)
 	{
 		ft_dprintf(2, "%c", d.field[j]);
-		if (j && !((j + 1) % d.width))
+		if (j && !((j + 1) % (unsigned long)d.width))
 			ft_dprintf(2, "\n");
 		j++;
 	}
@@ -32,13 +32,13 @@ void	print_map(t_data d)
 	while ((int)j < d.tok_width * d.tok_height && d.token[j])
 	{
 		ft_dprintf(2, "%c", d.token[j]);
-		if (j && !((j + 1) % d.tok_width))
+		if (j && !((j + 1) % (unsigned long)d.tok_width))
 			ft_dprintf(2, "\n");
 		j++;
 	}
 }
 
-int	main()
+int		main(void)
 {
 	t_data	data;
 
@@ -47,7 +47,6 @@ int	main()
 	while (42)
 	{
 		get_input(&data);
-		/* print_map(data); */
 		if (!algo(data))
 			return (0);
 	}
