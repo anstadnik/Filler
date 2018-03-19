@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   visual.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/17 13:07:22 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/18 15:09:14 by astadnik         ###   ########.fr       */
+/*   Created: 2018/03/18 12:45:30 by astadnik          #+#    #+#             */
+/*   Updated: 2018/03/18 16:24:03 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER_H
-# define FILLER_H
+#ifndef VISUAL_H
+# define VISUAL_H
+# include "mlx.h"
 # include "../libft/includes/libft.h"
 
 typedef	struct s_data t_data;
@@ -35,9 +36,8 @@ struct	s_data
 	char	*token;
 };
 
-void	initialize(t_data *data);
-void	get_input(t_data *data);
-char	algo(t_data data);
-void	print_map(t_data data);
+
+void		initialize(t_data *data, void **win_ptr, void *mlx_ptr);
+char		get_input(t_data *data);
 
 #endif
