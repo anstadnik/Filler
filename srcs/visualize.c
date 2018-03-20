@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 14:26:54 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/19 15:26:14 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/20 14:29:40 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,6 @@ static void	show_map(t_data d)
 		}
 	}
 }
-void	print_map(t_data d)
-{
-	size_t	j;
-
-	ft_dprintf(2, "MAP\nplayer - %c\nheight - %d\nwidth - %d\n",
-			d.player, d.height, d.width);
-	j = 0;
-	while ((int)j < d.width * d.height)
-	{
-		ft_dprintf(2, "%c", d.field[j]);
-		if (j && !((j + 1) % (unsigned long)d.width))
-			ft_dprintf(2, "\n");
-		j++;
-	}
-	ft_dprintf(2, "TOKEN\ntok_height - %d\ntok_width - %d\n",
-			d.tok_height, d.tok_width);
-	j = 0;
-	while ((int)j < d.tok_width * d.tok_height && d.token[j])
-	{
-		ft_dprintf(2, "%c", d.token[j]);
-		if (j && !((j + 1) % (unsigned long)d.tok_width))
-			ft_dprintf(2, "\n");
-		j++;
-	}
-}
-
 
 int			f(void)
 {
@@ -86,7 +60,6 @@ int			f(void)
 		g_stop = get_input(&g_data);
 		if (g_stop)
 			return (0);
-		/* print_map(g_data); */
 		mlx_clear_window(g_mlx_ptr, g_win_ptr);
 		show_map(g_data);
 	}
