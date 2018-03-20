@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 19:15:34 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/19 15:18:38 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/20 14:26:30 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void		get_input(t_data *data)
 	while ((int)++i < data->height)
 	{
 		get_next_line(0, &buf);
-		/* ft_dprintf(2, "%s\n", buf); */
 		ft_memcpy(data->field + i * data->width, buf + 4, data->width);
 		free(buf);
 	}

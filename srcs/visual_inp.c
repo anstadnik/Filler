@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 12:46:32 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/19 15:30:12 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/19 15:41:09 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static char	skip(void)
 			return (q(&buf, 0));
 		if (!ft_memcmp(buf, "==", 2))
 		{
+			ft_printf("%s\n", buf);
 			free(buf);
 			get_next_line(0, &buf);
+			ft_printf("%s\n", buf);
 			return (q(&buf, 1));
 		}
 		if (ft_memcmp(buf, "Plateau", 7) && ft_memcmp(buf, "Piece", 5) &&
