@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/17 13:07:22 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/19 14:11:12 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/20 15:56:38 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ struct	s_data
 void	initialize(t_data *data);
 void	get_input(t_data *data);
 char	algo(t_data data);
-void	print_map(t_data data);
 
 #endif

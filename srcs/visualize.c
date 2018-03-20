@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 14:26:54 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/20 14:29:40 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/20 16:28:31 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	show_map(t_data d)
 		while (cur.x++ < d.width)
 		{
 			if (ft_tolower(d.field[cur.y * d.width + cur.x]) == 'o')
-				put_rect(cur, 0x009C27B0);
+				put_rect(cur, 0x00AD1457);
 			else if (ft_tolower(d.field[cur.y * d.width + cur.x]) == 'x')
 				put_rect(cur, 0x00ff9800);
 			else
