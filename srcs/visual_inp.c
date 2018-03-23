@@ -6,7 +6,7 @@
 /*   By: astadnik <astadnik@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 12:46:32 by astadnik          #+#    #+#             */
-/*   Updated: 2018/03/19 15:41:09 by astadnik         ###   ########.fr       */
+/*   Updated: 2018/03/23 15:22:37 by astadnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void		initialize(t_data *data, void **win_ptr, void *mlx_ptr)
 	while (i < 9)
 	{
 		read(0, &tmp, 1);
+		ft_printf("%c", tmp);
 		if (tmp == '\n')
 			i++;
 	}
