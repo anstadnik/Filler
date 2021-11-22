@@ -58,8 +58,10 @@ int			f(void)
 	if (!g_stop)
 	{
 		g_stop = get_input(&g_data);
-		if (g_stop)
+		if (g_stop) {
+			mlx_destroy_window(g_mlx_ptr, g_win_ptr);
 			return (0);
+		}
 		mlx_clear_window(g_mlx_ptr, g_win_ptr);
 		show_map(g_data);
 	}

@@ -1,0 +1,6 @@
+[submodule "minilibx"]
+	path = minilibx
+	url = https://github.com/ttshivhula/minilibx
+[submodule "libft"]
+	path = libft
+	url = git@gitlab.com:astadnik/libft.git
